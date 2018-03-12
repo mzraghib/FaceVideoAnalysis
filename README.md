@@ -1,5 +1,5 @@
 # FaceVideoAnalysis
-Using Computer Vision to Analyse Student Videos
+Using Computer Vision to Analyze Student Videos
 
 Stage 1 - Video preprocessing into smaller units and feature extraction using OpenFace 
 
