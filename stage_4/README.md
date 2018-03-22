@@ -15,6 +15,22 @@ Helper functions
 - in progress
 
 
+## Instructions
+
+### 1
+clone the repo from reference 1
+
+Copy stage 4 code to the directory containing 'main.py'. 
+
+
+### 2
+clone the repo form reference 2
+
+See instructions in 'https://github.com/kenshohara/3D-ResNets-PyTorch' for performing the following:
+
+* Convert the student videos from avi to jpg files using utils/video_jpg.py
+
+* Generate fps files using utils/fps.py
 
 
 ## Reference
