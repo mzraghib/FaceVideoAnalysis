@@ -1,15 +1,11 @@
 # Stage 4 
-## Classification for Chalearn label 'extraversion' via feature extraction, and via transfer learning. A pretrained 3D ResNeXt-101 model (on the Kinetics dataset) 
-
+Classification for Chalearn label 'extraversion' via feature extraction, and via transfer learning. A pretrained 3D ResNeXt-101 model (on the Kinetics dataset) 
 
 ### main_stage4.py:
  Extrtact model and pretrain
 
 ### stage4helper.py
 Helper functions
-
-## Note: 
-- in progress
 
 
 ## Instructions
@@ -45,15 +41,16 @@ python utils/video_jpg_ucf101_hmdb51.py /scratch/mzraghib/stage4/chalearn/fine_t
 ```
 
 #### Generate n_frames
-	```
- python utils/n_frames_ucf101_hmdb51.py /scratch/mzraghib/stage4/chalearn/fine_tune/ChalearnFTjpg
- ```
+```
+python utils/n_frames_ucf101_hmdb51.py /scratch/mzraghib/stage4/chalearn/fine_tune/ChalearnFTjpg
+```
 
 #### Generate annotation file in json format similar to ActivityNet (changed range to single loop in ucf101_json.py and changed one line to split at second '.')
 
-	```
- python utils/ucf101_json.py /scratch/mzraghib/stage4/chalearn/fine_tune/annotations
- ```
+```
+python utils/ucf101_json.py /scratch/mzraghib/stage4/chalearn/fine_tune/annotations
+```
+
 ### 3.2) Fine tuning conv5_x and fc layers 
 
 ``` 
@@ -68,9 +65,11 @@ python main.py --root_path /scratch/mzraghib/stage4/chalearn/fine_tune/ --video_
 ```
 ### 3.3) Extract features and scores:
 
-``` python main.py --input ./input --video_root /scratch/mzraghib/stage4/chalearn/test \
+``` 
+python main.py --input ./input --video_root /scratch/mzraghib/stage4/chalearn/test \
  --output ./output_save_40_features.json --model /scratch/mzraghib/stage4/chalearn/fine_tune/results/save_40.pth \
- --model_name resnext --model_depth 101 --resnet_shortcut B --resnext_cardinality 32 --mode feature ```
+ --model_name resnext --model_depth 101 --resnet_shortcut B --resnext_cardinality 32 --mode feature
+```
 
 ## Reference
 
