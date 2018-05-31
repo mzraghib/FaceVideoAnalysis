@@ -3,7 +3,7 @@ Script to crop longer videos into shorter segments
 
 Set directories for uncropped videos and resulting cropped videos
 
-To crop all videos in the uncropped_dir, simply run the script which
+To crop all videos in the uncropped_dir, run the script which
 will output all cropped videos in the cropped_dir directory
 
 '''
@@ -20,14 +20,38 @@ logging.basicConfig(filename= 'test_logs.log',
 curr_dir =  os.getcwd()
 uncropped_dir = curr_dir + '\\videos_uncropped\\'
 cropped_dir = curr_dir + '\\videos_cropped\\'
-start_times = {'69202': 315,'69224': 214,'69225': 149,
-         '69227': 247,'69239': 272}
-begin_times = {'69202': 44126,'69224': 47447,'69225': 48082,
-         '69227': 51078,'69239': 53252}
 
-""" crop video from original video and save """
+# Data for videos used for directed study results
+#
+#start_times = {'69202': 315,'69224': 214,'69225': 149,
+#         '69227': 247,'69239': 272}
+#begin_times = {'69202': 44126,'69224': 47447,'69225': 48082,
+#         '69227': 51078,'69239': 53252}
+
+
+'''
+start times refer to the playback time in the video in seconds, 
+which corresponds to the start time of the first question, which 
+can be found in the relevant csv file
+'''         
+start_times = {'69274': 300,'69280':170 ,'69254': 284,
+         '69333': 227 ,'69279': 260,'69245': 265 ,'69285': 155,
+         '69592': 255 ,'69240': 245,'69286':349 ,'69277': 240,'69217':200}
+         
+'''
+begin times refer to the start time of the first question in a video, in seconds.
+Can be can be found in the relevant csv file
+'''         
+begin_times = {'69274': 52562,'69280': 60058,'69254': 40309,
+         '69333': 47388,'69279': 57753,'69245': 56447,'69285':60183,
+         '69592': 53297,'69240': 53321,'69286': 63971,'69277':53196,'69217':36946}        
+         
+
 
 def cropVideo(videoName, t1, t2, newName):
+    ''' 
+    crop video from original video and save 
+    '''
     ffmpeg_extract_subclip(videoName, t1, t2, targetname= cropped_dir + str(newName) + ".mp4")
     
     
@@ -83,14 +107,11 @@ def processVids(table, uncropped_vids_ids):
         #ignoring bad data
         if np.isnan(time_delta) or time_delta <= 0:
             logging.info('IGNORED {}.mp4 since time_delta = {}'.format(str(newName),(str(time_delta))))
-            continue
-#        print('Generating vid ', str(newName),'.mp4', 'of duration',
-#                     str(time_delta), 'seconds from', str(newt1), 'to ', str(newt2))
-        
+            continue 
+      
         logging.info('Generating vid {}.mp4 of duration {}s, from {} to {}'.format(str(newName),
                      str(time_delta),str(newt1),str(newt2)))
-
-        
+      
 
         videoName = uncropped_dir + uncropped_vids[str(table['sessionId'][i])]
         cropVideo(videoName, newt1, newt2, newName)
