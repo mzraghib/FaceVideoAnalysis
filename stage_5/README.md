@@ -12,7 +12,7 @@
 ## 2) Place uncropped videos in /videos_uncropped directory
 
  * Prepend the session ID to the beginning of the video file name
-  e.g - Webcam_wo_watermark_KameaM_4-19-2018.mp4  --> 69217_Webcam_wo_watermark_KameaM_4-19-2018.mp4
+  e.g - Webcam_wo_watermark_KameaM_4-19-2018.mp4  becomes 69217_Webcam_wo_watermark_KameaM_4-19-2018.mp4
   
  * Update the start_times and begin_times dictionaries in the code manually. Refer to the comments in the code
   
